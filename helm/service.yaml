@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: learning-0.0.1-SNAPSHOT-service
+spec:
+  selector:
+    app: learning-0.0.1-SNAPSHOT # Selects pods with this label
+  ports:
+    - protocol: TCP
+      port: 80 # Port on the service
+      targetPort: 8080 # Port on the container
+  type: LoadBalancer # Or ClusterIP for internal access only, NodePort for direct node access

@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: learning-app-SNAPSHOT-deployment
+  labels:
+    app: learning-0.0.1-SNAPSHOT
+spec:
+  replicas: 1 # Number of instances of your application
+  selector:
+    matchLabels:
+      app: learning-0.0.1-SNAPSHOT
+  template:
+    metadata:
+      labels:
+        app: learning-0.0.1-SNAPSHOT
+    spec:
+      containers:
+        - name: learning-app
+          image: learning-app:latest # Replace with your image name and tag
+          ports:
+            - containerPort: 8080 # Port exposed by your application
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
